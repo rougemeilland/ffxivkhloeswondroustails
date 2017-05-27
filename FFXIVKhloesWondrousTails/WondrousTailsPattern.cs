@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace FFXIVKhloesWondrousTails
 {
     internal class WondrousTailsPattern
-        : IEquatable<WondrousTailsPattern>
+        : IEquatable<WondrousTailsPattern>, IComparable<WondrousTailsPattern>
     {
         #region プライベートフィールド
 
@@ -152,6 +152,17 @@ namespace FFXIVKhloesWondrousTails
             if (!_bit_pattern.Equals(o._bit_pattern))
                 return (false);
             return (true);
+        }
+
+        #endregion
+
+        #region IComparable<WondrousTailsPattern> のメンバ
+
+        public int CompareTo(WondrousTailsPattern o)
+        {
+            if (o == null)
+                return (1);
+            return (_bit_pattern.CompareTo(o._bit_pattern));
         }
 
         #endregion

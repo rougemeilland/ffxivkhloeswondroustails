@@ -37,21 +37,27 @@ namespace FFXIVKhloesWondrousTails
             Console.WriteLine(string.Format("クロ帳に7マス埋める組み合わせの数＝{0}", クロ帳に7マス埋める組み合わせ.Length));
             var rate_array = クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ組み合わせとその確率.Select(item => item.rate).Distinct().OrderByDescending(item => item).ToArray();
             System.Diagnostics.Debug.Assert(rate_array.Length == 3);// 以降のコードはrate_arrayのサイズが3であることを仮定する
-            var クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が少しでも存在する組み合わせ = クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ組み合わせとその確率.Where(item => item.rate >= rate_array[2]).ToArray();
-            var クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が中程度以上で存在する組み合わせ = クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ組み合わせとその確率.Where(item => item.rate >= rate_array[1]).ToArray();
-            var クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が比較的高く存在する組み合わせ = クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ組み合わせとその確率.Where(item => item.rate >= rate_array[0]).ToArray();
+            var クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が少しでも存在する組み合わせ = クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ組み合わせとその確率.Where(item => item.rate >= rate_array[2]).OrderBy(item => item.rate).ThenBy(item => item.pattern).ToArray();
+            var クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が中程度以上で存在する組み合わせ = クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ組み合わせとその確率.Where(item => item.rate >= rate_array[1]).OrderBy(item => item.rate).ThenBy(item => item.pattern).ToArray();
+            var クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が比較的高く存在する組み合わせ = クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ組み合わせとその確率.Where(item => item.rate >= rate_array[0]).OrderBy(item => item.rate).ThenBy(item => item.pattern).ToArray();
             Console.WriteLine(string.Format("クロ帳に7マス埋めたうち、更に2マス埋めた結果3ライン並ぶ可能性が少しでも存在する組み合わせ＝{0} ({1:P2}), その場合の3ライン並ぶ平均確率＝{2:P2}",
                                             クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が少しでも存在する組み合わせ.Length,
                                             (double)クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が少しでも存在する組み合わせ.Length / クロ帳に7マス埋める組み合わせ.Length,
                                             クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が少しでも存在する組み合わせ.Average(item => item.rate)));
+            Console.WriteLine("例：");
+            Console.WriteLine(クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が少しでも存在する組み合わせ.First().pattern.GetPresentation());
             Console.WriteLine(string.Format("クロ帳に7マス埋めたうち、更に2マス埋めた結果3ライン並ぶ可能性が中程度以上で存在する組み合わせ＝{0} ({1:P2}), その場合の3ライン並ぶ平均確率＝{2:P2}",
                                             クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が中程度以上で存在する組み合わせ.Length,
                                             (double)クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が中程度以上で存在する組み合わせ.Length / クロ帳に7マス埋める組み合わせ.Length,
                                             クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が中程度以上で存在する組み合わせ.Average(item => item.rate)));
+            Console.WriteLine("例：");
+            Console.WriteLine(クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が中程度以上で存在する組み合わせ.First().pattern.GetPresentation());
             Console.WriteLine(string.Format("クロ帳に7マス埋めたうち、更に2マス埋めた結果3ライン並ぶ可能性が比較的高確率で存在する組み合わせ＝{0} ({1:P2}), その場合の3ライン並ぶ平均確率＝{2:P2}",
                                             クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が比較的高く存在する組み合わせ.Length,
                                             (double)クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が比較的高く存在する組み合わせ.Length / クロ帳に7マス埋める組み合わせ.Length,
                                             クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が比較的高く存在する組み合わせ.Average(item => item.rate)));
+            Console.WriteLine("例：");
+            Console.WriteLine(クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ可能性が比較的高く存在する組み合わせ.First().pattern.GetPresentation());
             /*
             foreach (var p in クロ帳に7マス埋め更に2マス埋めた結果3ライン並ぶ組み合わせ)
             {
